@@ -1,3 +1,15 @@
+"""
+Minna Chae
+Drawing Factory
+11.25.23
+"""
+"""
+This test case imports from shapes (aqueno's code) and Drawing Program 
+to run the test cases. 
+This is done instead of coding within Drawing Program to preserve debugging code
+"""
+
+
 from DrawingProgram import DrawingProgram
 from shapes import Shape, Circle, Rectangle, Triangle, Square
 
