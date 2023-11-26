@@ -1,7 +1,4 @@
-from shapes_with_docs import Circle
-from shapes_with_docs import Square
-from shapes_with_docs import Rectangle
-from shapes_with_docs import Triangle
+from shapes_with_docs import Circle, Square, Rectangle, Triangle
 
 
 class ShapeFactory:
