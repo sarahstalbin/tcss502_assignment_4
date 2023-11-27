@@ -30,11 +30,11 @@ class Circle(Shape):
         self.radius = radius  # initialising radius parameter for circle class
 
     def area(self):  # overriding area method from shape class and calculating area of circle
-        value_of_area = 3.14 * self.radius * self.radius
+        value_of_area = 3.141592653589793 * self.radius * self.radius
         return value_of_area
 
     def perimeter(self):  # overriding perimeter method from shape class and calculating perimeter of circle
-        value_of_perimeter = 6.28 * self.radius
+        value_of_perimeter = 6.283185307179586 * self.radius
         return value_of_perimeter
 
 
@@ -75,18 +75,11 @@ class Triangle(Shape):
         self.side3 = side3
 
     def area(self):  # overriding area method from shape class and calculating area of triangle
-        perimeter = self.perimeter()
-        return (perimeter * (perimeter - self.side1) * (perimeter - self.side2) * (perimeter - self.side3)) ** 0.5
+        half_perimeter = self.perimeter() / 2
+        return (half_perimeter * (half_perimeter - self.side1) * (half_perimeter - self.side2) * (
+                    half_perimeter - self.side3)) ** 0.5
 
     def perimeter(self):  # overriding perimeter method from shape class and calculating perimeter of triangle
-        return (self.side1 + self.side2 + self.side3) / 2
+        return self.side1 + self.side2 + self.side3
 
 
-c = Circle("Circle", 4)
-r = Rectangle("Rectangle", 4, 5)
-s = Square("Square", 5)
-t = Triangle("Triangle", 3, 4, 5)
-c.draw()
-r.draw()
-s.draw()
-t.draw()
