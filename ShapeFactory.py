@@ -17,13 +17,14 @@ class ShapeFactory:
         :param kwargs: variable shape data required based on the type of shape to be created.
         :return: a Circle, Square, Rectangle, or Triangle object.
         """
-        if shape_name == "circle":
+        if shape_name.lower() == "circle":
             return Circle(shape_name, *args)
-        elif shape_name == "square":
+        elif shape_name.lower() == "square":
             return Square(shape_name, *args)
-        elif shape_name == "rectangle":
+        elif shape_name.lower() == "rectangle":
             return Rectangle(shape_name, *args)
-        elif shape_name == "triangle":
+        elif shape_name.lower() == "triangle":
             return Triangle(shape_name, *args)
-        raise AssertionError("Shape type is not valid.")
+        else:
+            raise ValueError('Shape type is not valid')
 
