@@ -27,7 +27,7 @@ class DrawingProgram:
         formatted_list = [str(shape) for shape in self.list_shapes]
         return "\n".join(formatted_list) + "\n"
 
-    def add_shape(self, shape_name, **kwargs):  #Correct output
+    def add_shape(self, shape_name, *args):  #Correct output
         # Thoughts: is it better to sort in add_shape?
         # add_shape(Shape): a method that adds a Shape
 
@@ -36,16 +36,16 @@ class DrawingProgram:
             raise ValueError("Shapes must be Triangle, Rectangle, Square, or Circle")
         else:
             if shape_name == "Circle":
-                c = ShapeFactory.create_shape("Circle", **kwargs)
+                c = ShapeFactory.create_shape("Circle", *args)
                 self.list_shapes.append(c)
             elif shape_name == "Square":
-                s = ShapeFactory.create_shape("Square", **kwargs)
+                s = ShapeFactory.create_shape("Square", *args)
                 self.list_shapes.append(s)
             elif shape_name == "Rectangle":
-                r = ShapeFactory.create_shape("Rectangle", **kwargs)
+                r = ShapeFactory.create_shape("Rectangle", *args)
                 self.list_shapes.append(r)
             elif shape_name == "Triangle":
-                t = ShapeFactory.create_shape("Triangle", **kwargs)
+                t = ShapeFactory.create_shape("Triangle", *args)
                 self.list_shapes.append(t)
             self.size += 1
 
@@ -59,7 +59,7 @@ class DrawingProgram:
         else:
             remove_shape_counter = 0
             for inList in self.list_shapes:
-                if inList.get_name() == shape_name.get_name():
+                if inList == shape_name:
                     self.list_shapes.remove(inList)
                     remove_shape_counter += 1
                     self.size -= 1
