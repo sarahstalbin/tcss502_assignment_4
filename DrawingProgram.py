@@ -38,9 +38,9 @@ class DrawingProgram():
         # remove_shape(Shape): a method that removes ALL shapes that match the one passed as a parameter --
         # it should return in integer value to signify how many of that shape was removed
         remove_shape_counter = 0
-        for shape in self.list_shapes:
-            if shape.get_name() == shape_name:
-                self.list_shapes.remove(shape)
+        for inList in self.list_shapes:
+            if inList.get_name() == shape_name.get_name():
+                self.list_shapes.remove(inList)
                 remove_shape_counter += 1
                 self.size -= 1
         return remove_shape_counter
@@ -49,7 +49,7 @@ class DrawingProgram():
         # print_shape(Shape): prints all shapes that match the type of the shape passed in
         string = ""
         for shape in self.list_shapes:
-            if shape.get_name() == shape_name:
+            if shape.get_name() == shape_name.get_name():
                 string += str(shape) + "\n"
         return string
 

@@ -28,25 +28,25 @@ def dp_test():
     dp.add_shape(Circle("Circle", 5))
     dp.add_shape(Square("Square", 2))
     # print(dp.get_name(0))
-    # print(dp)
+    print(dp)
 
-    #remove Shape
-    # print(f"this is remove_shape {dp.remove_shape("Circle")}")
-    # print(dp)
+    # remove Shape
+    print(f"this is remove_shape {dp.remove_shape(Circle("Circle", 2))}")
+    print(dp)
 
     #Set Shape
     # dp.set_shape(1,Triangle("Triangle", 1,2,3))
 
     #print shape
-    # print(dp.print_shape("Triangle"))
+    print(dp.print_shape(Triangle("Triangle", 2, 4, 3)))
 
     #sort Shape
     # dp.sort_shapes()
     # print(dp)
 
     #iter
-    for shape in dp:
-        print(shape)
+    # for shape in dp:
+    #     print(shape)
 dp_test()
 
 #Test for Call via ShapeFactory
