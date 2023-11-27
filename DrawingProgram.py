@@ -35,16 +35,16 @@ class DrawingProgram:
         if shape_name != "Rectangle" and shape_name != "Triangle" and shape_name != "Square" and shape_name != "Circle":
             raise ValueError("Shapes must be Triangle, Rectangle, Square, or Circle")
         else:
-            if shape_type == "Circle":
+            if shape_name == "Circle":
                 c = ShapeFactory.create_shape("Circle", **kwargs)
                 self.list_shapes.append(c)
-            elif shape_type == "Square":
+            elif shape_name == "Square":
                 s = ShapeFactory.create_shape("Square", **kwargs)
                 self.list_shapes.append(s)
-            elif shape_type == "Rectangle":
+            elif shape_name == "Rectangle":
                 r = ShapeFactory.create_shape("Rectangle", **kwargs)
                 self.list_shapes.append(r)
-            elif shape_type == "Triangle":
+            elif shape_name == "Triangle":
                 t = ShapeFactory.create_shape("Triangle", **kwargs)
                 self.list_shapes.append(t)
             self.size += 1
