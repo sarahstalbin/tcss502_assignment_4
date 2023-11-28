@@ -3,9 +3,20 @@ from ShapeFactory import ShapeFactory
 
 
 class DrawingProgramMain(DrawingProgram):
+    """
+    Creates a DrawingProgram, adds shapes to it, and implements a variety of actions including
+    sorting and replacing.
+
+    Contains one method: run_program, which creates an instance of DrawingProgram, adds shapes to it,
+    sorts the shapes, adds more shapes, replaces some shapes, and sorts them again.
+    """
 
     def run_program(self):
-
+        """
+        Creates an instance of DrawingProgram, adds shapes to it, sorts the shapes, adds more shapes, replaces
+        some shapes, and sorts them again.
+        :return: None.
+        """
         # Create a drawing program
         drawing_program = DrawingProgram()
 
