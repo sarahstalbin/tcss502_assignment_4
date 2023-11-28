@@ -27,22 +27,19 @@ class DrawingProgram:
         formatted_list = [str(shape) for shape in self.list_shapes]
         return "\n".join(formatted_list) + "\n"
 
-    # def print_name(self):
-        # self.list_shapes[0].get_name()
+
     def add_shape(self, shape_name):  #Correct output
         # Thoughts: is it better to sort in add_shape?
         # add_shape(Shape): a method that adds a Shape
 
         # self.list_shapes.append(ShapeFactory)
         # print(shape_name.get_name)
-        if shape_name.get_name() != "Rectangle" and shape_name.get_name() != "Triangle" and shape_name.get_name() != "Square" and shape_name.get_name() != "Circle":
-            raise ValueError("Shapes must be Triangle, Rectangle, Square, or Circle")
-        else:
+
             # don't need if condition with updated Shape code
             # aShape = ShapeFactory.create_shape(shape_name, *args)
 
-            self.list_shapes.append(shape_name)
-            self.size += 1
+        self.list_shapes.append(shape_name)
+        self.size += 1
 
     def remove_shape(self, shape_name):
         # remove_shape(Shape): a method that removes ALL shapes that match the one passed as a parameter --
@@ -50,12 +47,10 @@ class DrawingProgram:
 
         if len(self.list_shapes) == 0:
             return "There are no Shapes in the list"
-        elif shape_name != "Rectangle" and shape_name != "Triangle" and shape_name != "Square" and shape_name != "Circle":
-            raise ValueError("Shapes must be Triangle, Rectangle, Square, or Circle")
         else:
             remove_shape_counter = 0
             for inList in self.list_shapes:
-                if inList.get_name() == shape_name:
+                if inList.get_name().lower() == shape_name.lower():
                     self.list_shapes.remove(inList)
                     remove_shape_counter += 1
                     self.size -= 1
@@ -65,12 +60,10 @@ class DrawingProgram:
         # print_shape(Shape): prints all shapes that match the type of the shape passed in
         if len(self.list_shapes) == 0:
             return "There are no Shapes in the list"
-        elif shape_name != "Rectangle" and shape_name != "Triangle" and shape_name != "Square" and shape_name != "Circle":
-            raise ValueError("Shapes must be Triangle, Rectangle, Square, or Circle")
         else:
             string = ""
             for shape in self.list_shapes:
-                if shape.get_name() == shape_name:
+                if shape.get_name().lower() == shape_name.lower():
                     string += str(shape) + "\n"
         return string
 
@@ -79,7 +72,7 @@ class DrawingProgram:
         # for its worst case
         # shapes will be sorted first by name, then by area if names are same
         if len(self.list_shapes) == 0:
-            return "There are no Shapes in the list"
+            return IndexError("There are no Shapes in the list")
         else:
             self.list_shapes.sort(key=lambda x: (x.name, x.area()))
 
@@ -89,7 +82,7 @@ class DrawingProgram:
         if len(self.list_shapes) == 0:
             return "There are no Shapes in the list"
         elif index >= len(self.list_shapes) or index < 0 or len(self.list_shapes) == 0:
-            raise ValueError("Index cannot be greater than the length of the list")
+            raise IndexError
         else:
             return self.list_shapes[index]
 
@@ -99,15 +92,23 @@ class DrawingProgram:
         if len(self.list_shapes) == 0:
             return "There are no Shapes in the list"
         elif index >= len(self.list_shapes) or index < 0 or len(self.list_shapes) == 0:
-            raise ValueError("Index cannot be greater than the length of the list")
+            raise IndexError
         else:
             # aShape = ShapeFactory.create_shape(shape_name, *args)
             self.list_shapes[index] = shape_name
 
+    def clear_all_shapes(self):
+        #clears all the shapes from the list
+        if len(self.list_shapes) == 0:
+            return "There are no Shapes in the list"
+        else:
+            del self.list_shapes[:]
+            return f"The is is empty"
+
 
     def __iter__(self): #code taken from the text book
         if len(self.list_shapes) == 0:
-            return "There are no Shapes in the list"
+            raise IndexError("There are no Shapes in the list")
         else:
             return DrawingProgramIterator(self.list_shapes)
 
@@ -139,3 +140,9 @@ class DrawingProgramIterator:
         # assuming drawing_program = DrawingProgram(), the following code should work
         # for shape in drawing_program:
         # print(shape)
+
+
+dp = DrawingProgram()
+shape = ShapeFactory.create_shape("Circle", 2)
+dp.test_get_lower(shape)
+# dp.add_shape(shape)
