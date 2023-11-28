@@ -29,17 +29,19 @@ class DrawingProgram:
 
     # def print_name(self):
         # self.list_shapes[0].get_name()
-    def add_shape(self, shape_name, *args):  #Correct output
+    def add_shape(self, shape_name):  #Correct output
         # Thoughts: is it better to sort in add_shape?
         # add_shape(Shape): a method that adds a Shape
 
         # self.list_shapes.append(ShapeFactory)
-        if shape_name != "Rectangle" and shape_name != "Triangle" and shape_name != "Square" and shape_name != "Circle":
+        # print(shape_name.get_name)
+        if shape_name.get_name() != "Rectangle" and shape_name.get_name() != "Triangle" and shape_name.get_name() != "Square" and shape_name.get_name() != "Circle":
             raise ValueError("Shapes must be Triangle, Rectangle, Square, or Circle")
         else:
             # don't need if condition with updated Shape code
-            aShape = ShapeFactory.create_shape(shape_name, *args)
-            self.list_shapes.append(aShape)
+            # aShape = ShapeFactory.create_shape(shape_name, *args)
+
+            self.list_shapes.append(shape_name)
             self.size += 1
 
     def remove_shape(self, shape_name):
@@ -92,15 +94,15 @@ class DrawingProgram:
             return self.list_shapes[index]
 
 
-    def set_shape(self, index, shape_name, *args): #Correct output
+    def set_shape(self, index, shape_name): #Correct output
         # set_shape(index, Shape): replaces the shape at the specified index
         if len(self.list_shapes) == 0:
             return "There are no Shapes in the list"
         elif index >= len(self.list_shapes) or index < 0 or len(self.list_shapes) == 0:
             raise ValueError("Index cannot be greater than the length of the list")
         else:
-            aShape = ShapeFactory.create_shape(shape_name, *args)
-            self.list_shapes[index] = aShape
+            # aShape = ShapeFactory.create_shape(shape_name, *args)
+            self.list_shapes[index] = shape_name
 
 
     def __iter__(self): #code taken from the text book
