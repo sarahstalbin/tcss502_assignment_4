@@ -14,7 +14,7 @@ class ShapeFactory:
         """
         Creates a Shape object of a specified type using the relevant data for building that Shape. Returns the Shape.
         :param shape_name: name of the shape object to be created.
-        :param kwargs: variable shape data required based on the type of shape to be created.
+        :param *args: variable shape data required based on the type of shape to be created.
         :return: a Circle, Square, Rectangle, or Triangle object.
         """
         if shape_name.lower() == "circle":
