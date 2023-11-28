@@ -45,19 +45,14 @@ class DrawingProgramMain(DrawingProgram):
         print("\nUpdated List with New Shapes:")
         print(drawing_program)
 
-        # Replace some shapes
-        # Remove:
-        drawing_program.remove_shape("Circle")
-
-        print(drawing_program)
-
-        # Create more:
+        # Replace some Shapes
+        # Create new Shape objects:
         triangle3 = ShapeFactory.create_shape("Triangle", 4, 7, 10)
         circle3 = ShapeFactory.create_shape("Circle", 9)
 
-        # Add new shapes to replace the deleted ones:
-        drawing_program.add_shape(triangle3)
-        drawing_program.add_shape(circle3)
+        # Replace existing Shapes with the new Shapes
+        drawing_program.set_shape(1, triangle3)
+        drawing_program.set_shape(3, circle3)
 
         print("\nUpdated List with Replacement Shapes:")
         print(drawing_program)
@@ -66,8 +61,3 @@ class DrawingProgramMain(DrawingProgram):
         drawing_program.sort_shapes()
         print('\nSorted List of Shapes:')
         print(drawing_program)
-
-
-# TESTS
-my_fun_program = DrawingProgramMain()
-my_fun_program.run_program()
