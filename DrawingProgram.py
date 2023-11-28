@@ -3,7 +3,7 @@ Minna Chae
 Drawing Program
 TCSS 502
 """
-from shapes import Shape, Circle, Rectangle, Triangle, Square
+from shapes_with_docs import Circle, Square, Triangle, Rectangle
 from ShapeFactory import ShapeFactory
 
 
@@ -27,6 +27,8 @@ class DrawingProgram:
         formatted_list = [str(shape) for shape in self.list_shapes]
         return "\n".join(formatted_list) + "\n"
 
+    # def print_name(self):
+        # self.list_shapes[0].get_name()
     def add_shape(self, shape_name, *args):  #Correct output
         # Thoughts: is it better to sort in add_shape?
         # add_shape(Shape): a method that adds a Shape
@@ -52,6 +54,7 @@ class DrawingProgram:
     def remove_shape(self, shape_name):
         # remove_shape(Shape): a method that removes ALL shapes that match the one passed as a parameter --
         # it should return in integer value to signify how many of that shape was removed
+
         if len(self.list_shapes) == 0:
             return "There are no Shapes in the list"
         elif shape_name != "Rectangle" and shape_name != "Triangle" and shape_name != "Square" and shape_name != "Circle":
@@ -59,7 +62,7 @@ class DrawingProgram:
         else:
             remove_shape_counter = 0
             for inList in self.list_shapes:
-                if inList == shape_name:
+                if inList.get_name() == shape_name:
                     self.list_shapes.remove(inList)
                     remove_shape_counter += 1
                     self.size -= 1
@@ -74,7 +77,7 @@ class DrawingProgram:
         else:
             string = ""
             for shape in self.list_shapes:
-                if shape.get_name() == shape_name.get_name():
+                if shape.get_name() == shape_name:
                     string += str(shape) + "\n"
         return string
 
