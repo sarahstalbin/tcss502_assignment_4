@@ -3,7 +3,7 @@ Minna Chae
 Drawing Program
 TCSS 502
 """
-from shapes_with_docs import Circle, Square, Triangle, Rectangle
+from shapes import Circle, Square, Triangle, Rectangle
 from ShapeFactory import ShapeFactory
 
 
@@ -37,18 +37,9 @@ class DrawingProgram:
         if shape_name != "Rectangle" and shape_name != "Triangle" and shape_name != "Square" and shape_name != "Circle":
             raise ValueError("Shapes must be Triangle, Rectangle, Square, or Circle")
         else:
-            if shape_name == "Circle":
-                c = ShapeFactory.create_shape("Circle", *args)
-                self.list_shapes.append(c)
-            elif shape_name == "Square":
-                s = ShapeFactory.create_shape("Square", *args)
-                self.list_shapes.append(s)
-            elif shape_name == "Rectangle":
-                r = ShapeFactory.create_shape("Rectangle", *args)
-                self.list_shapes.append(r)
-            elif shape_name == "Triangle":
-                t = ShapeFactory.create_shape("Triangle", *args)
-                self.list_shapes.append(t)
+            # don't need if condition with updated Shape code
+            aShape = ShapeFactory.create_shape(shape_name, *args)
+            self.list_shapes.append(aShape)
             self.size += 1
 
     def remove_shape(self, shape_name):
@@ -101,14 +92,15 @@ class DrawingProgram:
             return self.list_shapes[index]
 
 
-    def set_shape(self, index, Shape): #Correct output
+    def set_shape(self, index, shape_name, *args): #Correct output
         # set_shape(index, Shape): replaces the shape at the specified index
         if len(self.list_shapes) == 0:
             return "There are no Shapes in the list"
         elif index >= len(self.list_shapes) or index < 0 or len(self.list_shapes) == 0:
             raise ValueError("Index cannot be greater than the length of the list")
         else:
-            self.list_shapes[index] = Shape
+            aShape = ShapeFactory.create_shape(shape_name, *args)
+            self.list_shapes[index] = aShape
 
 
     def __iter__(self): #code taken from the text book
