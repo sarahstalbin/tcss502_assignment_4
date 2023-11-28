@@ -1,4 +1,4 @@
-from shapes_with_docs import Circle, Square, Rectangle, Triangle
+from shapes import Circle, Square, Rectangle, Triangle
 
 
 class ShapeFactory:
@@ -18,13 +18,12 @@ class ShapeFactory:
         :return: a Circle, Square, Rectangle, or Triangle object.
         """
         if shape_name.lower() == "circle":
-            return Circle(shape_name, *args)
+            return Circle(*args)
         elif shape_name.lower() == "square":
-            return Square(shape_name, *args)
+            return Square(*args)
         elif shape_name.lower() == "rectangle":
-            return Rectangle(shape_name, *args)
+            return Rectangle(*args)
         elif shape_name.lower() == "triangle":
-            return Triangle(shape_name, *args)
+            return Triangle(*args)
         else:
             raise ValueError('Shape type is not valid')
-
