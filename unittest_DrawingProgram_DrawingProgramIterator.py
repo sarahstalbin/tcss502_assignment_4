@@ -227,7 +227,7 @@ class MyDrawingProgramIteratorTest(unittest.TestCase):
 
     def test_iter_with_many_shapes(self):
         # Test Iterator iterating through many shapes
-        print("---------------Testing iter class for many shapes---------------")
+        # print("---------------Testing iter class for many shapes---------------")
         program = DrawingProgram()
         circle_small = ShapeFactory.create_shape("Circle", 1)
         circle_large = ShapeFactory.create_shape("Circle", 5)
@@ -243,15 +243,21 @@ class MyDrawingProgramIteratorTest(unittest.TestCase):
         program.add_shape(rectangle)
         program.add_shape(triangle)
 
-        # it1 = program.__iter__()
-        # self.assertRaises(StopIteration, shape)
-        # with self.assertRaises(StopIteration):
-        for shape in program:
+
+        #tests for next function in the iteration protocol
+        for i in program:
             self.assertRaises(StopIteration)
+
+        iter_string=""
+
+        for shape in program:
+            iter_string += str(shape) +"\n"
+
+        self.assertEqual(program.__str__(), iter_string)
 
     def test_iter_without_shapes(self):
         #Tests the iter function with no shapes where inter returns an IndexError
-        # print("---------------Testing iter class for no shapes---------------")
+
         program = DrawingProgram()
         with self.assertRaises(IndexError):
             for shape in program:
@@ -259,14 +265,20 @@ class MyDrawingProgramIteratorTest(unittest.TestCase):
 
     def test_iter_one_shape(self):
         # Test Iterator iterating through one shape
-        print("---------------Testing iter class for one shape---------------")
+
         program = DrawingProgram()
         circle_one = ShapeFactory.create_shape("Circle", 1)
         program.add_shape(circle_one)
-        # for shape in program:
-        #     print(shape)
-        for shape in program:
+
+        for i in program:
             self.assertRaises(StopIteration)
+
+        iter_string=""
+
+        for shape in program:
+            iter_string += str(shape) +"\n"
+
+        self.assertEqual(program.__str__(), iter_string)
 
 if __name__ == '__main__':
     unittest.main()
