@@ -4,6 +4,8 @@ Assignment: Inheritance, Composition and More Patterns
 Class: TCSS 502
 """
 
+from DrawingProgramIterator import DrawingProgramIterator
+
 """
 This class DrawingProgram takes in a shape object and stores it within a list/collection.
 DrawingProgram can add shapes to the list, remove all shapes from the list that match the given shape, 
@@ -12,28 +14,27 @@ or replace based on a given index and new Shape. The iter method uses the class 
 array and return a Iterator object.
 """
 
-from DrawingProgramIterator import DrawingProgramIterator
 
 class DrawingProgram:
     def __init__(self):
-        # init with array to hold Shape objects and int to count size
+        """ init with array to hold Shape objects and int to count size"""
         self.__list_shapes = []
         self.size = 0
 
     def __str__(self):
-        # Returns a string representation of each of the shapes  and each shape will be
-        # separated from others by a newline
+        """  Returns a string representation of each of the shapes  and each shape will be
+            separated from others by a newline"""
         formatted_list = [str(shape) for shape in self.__list_shapes]
         return "\n".join(formatted_list) + "\n"
 
     def add_shape(self, shape):
-        # Add a Shape object to the array
+        """  Add a Shape object to the array"""
         self.__list_shapes.append(shape)
         self.size += 1
 
     def remove_shape(self, shape):
-        # Removes ALL shapes objects that match the one passed as a string parameter
-        # Also returns an integer value to signify how many of that shape was removed
+        """  Removes ALL shapes objects that match the one passed as a string parameter
+            Also returns an integer value to signify how many of that shape was removed"""
         if len(self.__list_shapes) == 0:
             raise IndexError("There are no Shapes in the list")
         else:
@@ -42,11 +43,11 @@ class DrawingProgram:
                 if inList.get_name().lower() == shape.lower():
                     self.__list_shapes.remove(inList)
                     remove_shape_counter += 1
-                    self.size -= 1
+            self.size -= 1
         return remove_shape_counter
 
     def print_shape(self, shape):
-        # Prints all Shape objects that match the type of the shape string passed in
+        """  Prints all Shape objects that match the type of the shape string passed in"""
         if len(self.__list_shapes) == 0:
             raise IndexError("There are no Shapes in the list")
         else:
@@ -57,15 +58,15 @@ class DrawingProgram:
         return string
 
     def sort_shapes(self):
-        # Sorts the list of Shapes in O(nlogn) for its worst case
-        # shapes will be sorted first by name, then by area if names are same
+        """  Sorts the list of Shapes in O(nlogn) for its worst case
+            shapes will be sorted first by name, then by area if names are same"""
         if len(self.__list_shapes) == 0:
             raise IndexError("There are no Shapes in the list")
         else:
             self.__list_shapes.sort(key=lambda x: (x.name, x.area()))
 
     def get_shape(self, index):
-        # Returns the shape at the specified index within the array
+        """  Returns the shape at the specified index within the array"""
         if len(self.__list_shapes) == 0:
             raise IndexError("There are no Shapes in the list")
         elif index >= len(self.__list_shapes) or index < 0 or len(self.__list_shapes) == 0:
@@ -74,19 +75,17 @@ class DrawingProgram:
             return self.__list_shapes[index]
 
     def set_shape(self, index, shape):
-        # Replaces the shape at the specified index within the array
+        """Replaces the shape at the specified index within the array"""
         if len(self.__list_shapes) == 0:
             raise IndexError("There are no Shapes in the list")
         elif index >= len(self.__list_shapes) or index < 0 or len(self.__list_shapes) == 0:
             raise IndexError("Index out of range")
         else:
-            # aShape = ShapeFactory.create_shape(shape_name, *args)
             self.__list_shapes[index] = shape
 
     def __iter__(self):
-        #Allows iteration through a list of Shapes
+        """ Allows iteration through a list of Shapes"""
         if len(self.__list_shapes) == 0:
             raise IndexError("There are no Shapes in the list")
         else:
             return DrawingProgramIterator(self.__list_shapes)
-
