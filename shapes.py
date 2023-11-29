@@ -2,91 +2,117 @@ from abc import ABC, abstractmethod  # importing abstract base class
 
 
 class Shape(ABC):  # ABC - abstract base class
+    """ Creating a shape class which is an ABC class type. The methods in this class are: constructor,
+    get_name, area(abstract method) and perimeter(abstract method), draw which prints the str method
+    and a str method which has the string representation of get_name, area and perimeter"""
 
-    def __init__(self, name):  # constructor for initialising name
+    def __init__(self, name):
+        """  constructor for initialising name
+          param : name """
+
         self.name = name
 
-    def get_name(self):  # method to get name
+    def get_name(self):
+        """  method to get name
+        return: name"""
+
         return self.name
 
     @abstractmethod
-    def area(self):  # abstract method for area
+    def area(self):
+        """  abstract method for area"""
         pass
 
     @abstractmethod
-    def perimeter(self):  # abstract method for perimeter
+    def perimeter(self):
+        """  abstract method for perimeter"""
         pass
 
     def draw(self):
-        print(self.__str__())  # printing the str method in draw method
+        """ method to draw shapes which prints the str method"""
+        print(self.__str__())
 
-    def __str__(self):  # str method returns name, area and perimeter from the child classes
+    def __str__(self):
+        """  str method returns name, area and perimeter from the child classes"""
         return "{}, area: {}, perimeter: {}".format(self.get_name(), self.area(), self.perimeter())
 
 
 class Circle(Shape):
+    """ class Circle is a child class of Shape which gives the name of the class its area and perimeter """
     def __init__(self, radius):
-        super().__init__("Circle")  # getting name from the shape class
-        self.radius = radius  # initialising radius parameter for circle class
+        """ gets name from the Shape class
+        param: radius"""
+        super().__init__("Circle")
+        self.radius = radius
 
-    def area(self):  # overriding area method from shape class and calculating area of circle
+    def area(self):
+        """ overriding area method from shape class and calculating area of circle"""
         value_of_area = 3.141592653589793 * self.radius * self.radius
         return value_of_area
 
-    def perimeter(self):  # overriding perimeter method from shape class and calculating perimeter of circle
+    def perimeter(self):
+        """  overriding perimeter method from shape class and calculating perimeter of circle"""
         value_of_perimeter = 6.283185307179586 * self.radius
         return value_of_perimeter
 
 
 class Rectangle(Shape):
-    def __init__(self,  length, width):  # initialising length and width parameter for rectangle class
-        super().__init__("Rectangle")  # getting name from the shape class
+    """ class Rectangle is a child class of Shape which gives the name of the class its area and perimeter"""
+    def __init__(self, length, width):
+        """  gets name from the Shape class
+        param: length, width"""
+        super().__init__("Rectangle")
         self.length = length
         self.width = width
 
-    def area(self):  # overriding area method from shape class and calculating area of rectangle
+    def area(self):
+        """ overriding area method from shape class and calculating area of rectangle"""
         value_of_area = self.length * self.width
         return value_of_area
 
-    def perimeter(self):  # overriding perimeter method from shape class and calculating perimeter of rectangle
+    def perimeter(self):
+        """  overriding perimeter method from shape class and calculating perimeter of rectangle"""
         value_of_perimeter = 2 * (self.length + self.width)
         return value_of_perimeter
 
 
 class Square(Shape):
-    def __init__(self, side):  # initialising side parameter for square class
+    """ class Square is a child class of Shape which gives the name of the class its area and perimeter"""
+    def __init__(self, side):
+        """  gets name from the Shape class
+                param: side"""
         super().__init__("Square")
         self.side = side
 
-    def area(self):  # overriding area method from shape class and calculating area of square
+    def area(self):
+        """ overriding area method from shape class and calculating area of square"""
         value_of_area = self.side * self.side
         return value_of_area
 
-    def perimeter(self):  # overriding perimeter method from shape class and calculating perimeter of square
+    def perimeter(self):
+        """  overriding perimeter method from shape class and calculating perimeter of square"""
         value_of_perimeter = 4 * self.side
         return value_of_perimeter
 
 
 class Triangle(Shape):
-    def __init__(self, side1, side2, side3):  # initialising side1, side2, side3 parameter for triangle class
-        super().__init__("Triangle")   # getting name from the shape class
+    """ class Triangle is a child class of Shape which gives the name of the class its area and perimeter"""
+    def __init__(self, side1, side2, side3):
+        """  gets name from the Shape class
+                param: side1, side2, side3"""
+        super().__init__("Triangle")
         self.side1 = side1
         self.side2 = side2
         self.side3 = side3
 
-    def area(self):  # overriding area method from shape class and calculating area of triangle
+    def area(self):
+        """ overriding area method from shape class and calculating area of triangle"""
         half_perimeter = self.perimeter() / 2
-        return (half_perimeter * (half_perimeter - self.side1) * (half_perimeter - self.side2) * (half_perimeter - self.side3)) ** 0.5
+        return (half_perimeter * (half_perimeter - self.side1) * (half_perimeter - self.side2) * (
+                half_perimeter - self.side3)) ** 0.5
 
-    def perimeter(self):  # overriding perimeter method from shape class and calculating perimeter of triangle
+    def perimeter(self):
+        """  overriding perimeter method from shape class and calculating perimeter of triangle"""
         return self.side1 + self.side2 + self.side3
 
 
-# c = Circle("Circle", 4)
-# r = Rectangle("Rectangle", 4, 5)
-# s = Square("Square", 5)
-# t = Triangle("Triangle", 3, 4, 5)
-# c.draw()
-# r.draw()
-# s.draw()
-# t.draw()
