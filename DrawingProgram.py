@@ -5,6 +5,7 @@ Class: TCSS 502
 """
 
 from DrawingProgramIterator import DrawingProgramIterator
+from ShapeFactory import ShapeFactory
 
 """
 This class DrawingProgram takes in a shape object and stores it within a list/collection.
@@ -63,8 +64,8 @@ class DrawingProgram:
         if len(self.__list_shapes) == 0:
             raise IndexError("There are no Shapes in the list")
         else:
-            self.__list_shapes.sort(key=lambda x: (x.name, x.area()))
-
+            self.__list_shapes.sort()
+            
     def get_shape(self, index):
         """  Returns the shape at the specified index within the array"""
         if len(self.__list_shapes) == 0:
@@ -89,3 +90,15 @@ class DrawingProgram:
             raise IndexError("There are no Shapes in the list")
         else:
             return DrawingProgramIterator(self.__list_shapes)
+
+dp = DrawingProgram()
+
+dp.add_shape(ShapeFactory.create_shape("Rectangle", 3, 4))
+dp.add_shape(ShapeFactory.create_shape("Triangle", 2, 4, 3))
+dp.add_shape(ShapeFactory.create_shape("Square", 3))
+dp.add_shape(ShapeFactory.create_shape("Triangle", 3,3,6))
+dp.add_shape(ShapeFactory.create_shape("Circle", 5))
+
+dp.sort_shapes()
+
+print(dp)
