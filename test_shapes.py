@@ -23,7 +23,7 @@ class TestShapes(unittest.TestCase):
         rectangle = Rectangle(4, 6)
         self.assertEqual(rectangle.area(), 24)
         self.assertEqual(rectangle.perimeter(), 20)
-        self.assertEqual(rectangle.get_name(), "Rectangle")  
+        self.assertEqual(rectangle.get_name(), "Rectangle")
 
     def test_triangle_area_perimeter(self):
         """ Testing the area, perimeter and the get_name function of Triangle class"""
